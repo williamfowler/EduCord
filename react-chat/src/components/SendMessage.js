@@ -1,5 +1,9 @@
 import React from "react";
 
+// added
+import { auth, db } from "../firebase";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+
 const SendMessage = () => {
   return (
     <form className="send-message">

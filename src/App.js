@@ -1,13 +1,12 @@
-import { auth } from "./firebase";
-import { useAuthState } from "react-firebase-hooks/auth";
 import "./App.css";
 import NavBar from "./components/NavBar";
 import ChatBox from "./components/ChatBox";
 import Welcome from "./components/Welcome";
+import { useState } from "react";
 
 function App() {
-  const [user] = useAuthState(auth);
-
+  const [user, setUser] = useState(false);
+    
   return (
     <div className="App">
       <NavBar />
@@ -21,5 +20,5 @@ function App() {
     </div>
   );
 }
-
+ 
 export default App;
