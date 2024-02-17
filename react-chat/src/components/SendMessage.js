@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 // added
 import { auth, db } from "../firebase";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 
-const SendMessage = () => {
+const SendMessage = ({ scroll }) => {
   // added
   const [message, setMessage] = useState("");
 
@@ -23,6 +23,7 @@ const SendMessage = () => {
       uid,
     });
     setMessage("");
+    scroll.current.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
