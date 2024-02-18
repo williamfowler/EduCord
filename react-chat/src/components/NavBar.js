@@ -7,44 +7,30 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { GoogleAuthProvider, signInWithRedirect } from "firebase/auth";
 
 const NavBar = () => {
-  // const [user, setUser] = useState(false);
 
-  // added
+  const [selectedClassmate, setSelectedClassmate] = useState(null);
+  const selectClassmate = (classmateId) => {
+    setSelectedClassmate(classmateId);
+  };
   const [user] = useAuthState(auth);
-
-  // const googleSignIn = () => {
-  //   setUser(true);
-  // }; 
 
   const googleSignIn = () => {
     const provider = new GoogleAuthProvider();
     signInWithRedirect(auth, provider);
   };
 
-  // const signOut = () => {
-  //   setUser(false);
-  // };
   const signOut = () => {
     auth.signOut();
   };
 
   return (
     <nav className="nav-bar">
-      <h1>React Chat</h1>
+      <h1>ShitCord</h1>
       {user ? (
         <button onClick={signOut} className="sign-out" type="button">
           Sign Out
         </button>
-      ) : (
-        <button className="sign-in">
-          <img
-            onClick={googleSignIn}
-            src={GoogleSignin}
-            alt="sign in with google"
-            type="button"
-          />
-        </button>
-      )}
+      ) : null}
     </nav>
   );
 };

@@ -40,6 +40,7 @@ const SendMessage = ({ scroll }) => {
         // added
         value={message}
         onChange={(e) => setMessage(e.target.value)}
+        
       />
       <button type="submit">Send</button>
     </form>

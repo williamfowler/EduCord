@@ -9,11 +9,13 @@ import {
 import { db } from "../firebase";
 import Message from "./Message";
 import SendMessage from "./SendMessage";
+import Friends from "./ClassmateSidebar.js";
+import ClassmatesSidebar from "./ClassmateSidebar.js";
+
 
 const ChatBox = () => {
   const [messages, setMessages] = useState([]);
   const scroll = useRef();
-
   useEffect(() => {
     const q = query(
       collection(db, "messages"),
@@ -35,7 +37,8 @@ const ChatBox = () => {
   }, []);
 
   return (
-    <main className="chat-box">
+    <div className="container">
+      <main className="chat-box">
       <div className="messages-wrapper">
         {messages?.map((message) => (
           <Message key={message.id} message={message} />
@@ -46,6 +49,8 @@ const ChatBox = () => {
       <SendMessage scroll={scroll} />
       
     </main>
+    </div>
+    
   );
 };
 
