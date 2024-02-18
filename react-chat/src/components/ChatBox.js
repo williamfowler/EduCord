@@ -12,7 +12,7 @@ import SendMessage from "./SendMessage";
 
 const ChatBox = ({ selectedChatRoom }) => {
   const [messages, setMessages] = useState([]);
-  const scroll = useRef();
+  const scrollRef = useRef();
 
   useEffect(() => {
     const q = query(
@@ -34,6 +34,12 @@ const ChatBox = ({ selectedChatRoom }) => {
     return () => unsubscribe;
   }, [selectedChatRoom]);
 
+  useEffect(() => {
+    // Scroll to the bottom of the chat whenever messages change
+    if (scrollRef.current) {
+      scrollRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messages]);
   
 
   return (
@@ -43,9 +49,10 @@ const ChatBox = ({ selectedChatRoom }) => {
           {messages?.map((message) => (
             <Message key={message.id} message={message} />
           ))}
+        {/* Reference for scrolling */}
+        <span ref={scrollRef}></span>
         </div>
-        <span ref={scroll}></span>
-        <SendMessage scroll={scroll} selectedChatRoom={selectedChatRoom}/>
+        <SendMessage scroll={scrollRef} />
       </main>
     </div>
   );
