@@ -22,6 +22,10 @@ const SendMessage = ({ scroll , selectedChatRoom }) => {
       createdAt: serverTimestamp(),
       uid,
     });
+
+    await addDoc(collection(db, "users"), {
+      name: displayName,
+    });
     setMessage("");
     scroll.current.scrollIntoView({ behavior: "smooth" });
   };

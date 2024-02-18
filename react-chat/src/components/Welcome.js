@@ -2,13 +2,23 @@ import React from "react";
 import GoogleSignin from "../img/btn_google_signin_dark_pressed_web.png";
 
 // added
-import { auth } from "../firebase";
+import { auth, db } from "../firebase";
 import { GoogleAuthProvider, signInWithRedirect } from "firebase/auth";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+
+
 
 const Welcome = () => {
   const googleSignIn = () => {
     const provider = new GoogleAuthProvider();
     signInWithRedirect(auth, provider);
+
+    // const { uid, displayName, photoURL } = auth.currentUser;
+    // addDoc(collection(db, "users"), {
+    //   name: displayName,
+    //   createdAt: serverTimestamp(),
+    // });
+    // window.alert("new user signed in");
   };
 
   return (
