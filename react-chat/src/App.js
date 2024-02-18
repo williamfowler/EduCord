@@ -13,6 +13,8 @@ function App() {
 
   // Related to chat room
   const [selectedChatRoom, setSelectedChatRoom] = useState("CS 11"); // Default to "messages"
+  const [nameOfChat, setNameOfChat] = useState("CS 11"); // Default to "messages"
+
 
   return (
     <div className="App">
@@ -20,9 +22,9 @@ function App() {
         <Welcome />
       ) : (
         <>
-          <ClassmatesSidebar onSelectChatRoom={setSelectedChatRoom}/>
+          <ClassmatesSidebar onSelectChatRoom={setSelectedChatRoom} onNameOfChat={setNameOfChat}/>
           <ClassesSidebar onSelectClass={setSelectedChatRoom}/>
-          <NavBar />
+          <NavBar nameOfChat={nameOfChat}/>
           <ChatBox selectedChatRoom={selectedChatRoom} />
         </>
       )}

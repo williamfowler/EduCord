@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { auth, db } from '../firebase';
 import { collection, getDocs } from 'firebase/firestore';
 
-const ClassmatesSidebar = ({ onSelectChatRoom }) => {
+const ClassmatesSidebar = ({ onSelectChatRoom , onNameOfChat }) => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -28,6 +28,8 @@ const ClassmatesSidebar = ({ onSelectChatRoom }) => {
     // Concatenate the current user's name and the selected user's name
     const chatRoomName = userNames.join('_');
     onSelectChatRoom(chatRoomName);
+
+    onNameOfChat(user.name);
   };
 
   return (
