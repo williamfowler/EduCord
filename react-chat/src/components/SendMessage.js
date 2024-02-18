@@ -1,10 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 
 // added
 import { auth, db } from "../firebase";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 
-const SendMessage = ({ scroll }, { selectedChatRoom }) => {
+const SendMessage = ({ scroll , selectedChatRoom }) => {
   // added
   const [message, setMessage] = useState("");
 
@@ -14,6 +14,7 @@ const SendMessage = ({ scroll }, { selectedChatRoom }) => {
       return;
     }
     const { uid, displayName, photoURL } = auth.currentUser;
+    // error is because selectedChatRoom is empty
     await addDoc(collection(db, selectedChatRoom), {
       text: message,
       name: displayName,
@@ -45,8 +46,5 @@ const SendMessage = ({ scroll }, { selectedChatRoom }) => {
     </form>
   );
 };
-
-
-
 
 export default SendMessage;
