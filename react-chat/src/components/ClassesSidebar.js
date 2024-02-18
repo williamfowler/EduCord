@@ -6,14 +6,15 @@ const ClassesSidebar = ({ /*classes, */ onSelectClass }) => {
     onSelectClass(room); // Call callback function to change selected chat room
   };
 
+  // originally these sent to Class 1 and Class 2
   return (
     <aside className="classes-sidebar">
       <h2>Classes</h2>
-      <button onClick={() => handleClassChange("Class 1")}> {/* Change the collection name */}
-        Class 1
+      <button onClick={() => handleClassChange("CS 11")} className= "class-button"> {/* Change the collection name */}
+        CS 11
       </button>
-      <button onClick={() => handleClassChange("Class 2")}> {/* Change the collection name */}
-        Class 2
+      <button onClick={() => handleClassChange("CS 15")} className= "class-button"> {/* Change the collection name */}
+        CS 15
       </button>
     </aside>
   );

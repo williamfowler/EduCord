@@ -34,8 +34,8 @@ const ClassmatesSidebar = ({ onSelectChatRoom }) => {
     <aside className="classmates-sidebar">
       <h2>Classmates</h2>
       {users.map((user) => (
-        <button key={user.name} onClick={() => handleChatRoomChange(user)}>
-          Enter Chat Room with {user.name}
+        <button key={user.name} onClick={() => handleChatRoomChange(user)} className="classmate-button">
+          {user.name}
         </button>
       ))}
     </aside>

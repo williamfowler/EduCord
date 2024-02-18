@@ -34,8 +34,6 @@ const ChatBox = ({ selectedChatRoom }) => {
     return () => unsubscribe;
   }, [selectedChatRoom]);
 
-  
-
   return (
     <div className="container">
       <main className="chat-box">
