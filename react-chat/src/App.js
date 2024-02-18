@@ -12,7 +12,7 @@ function App() {
   const [user] = useAuthState(auth);
 
   // Related to chat room
-  const [selectedChatRoom, setSelectedChatRoom] = useState("messages"); // Default to "messages"
+  const [selectedChatRoom, setSelectedChatRoom] = useState("CS 11"); // Default to "messages"
 
   return (
     <div className="App">

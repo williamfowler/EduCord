@@ -168,7 +168,7 @@ input {
   padding: 5px 10px;
   border-radius: 0 5px 5px 0;
   color: #242443;
-  border: 1px solid #7cc5d9;
+  border: 1px solid #3f545a;
   background-color: #7cc5d9;
   font-weight: 200;
   font-family : 'League Spartan';
@@ -211,4 +211,38 @@ input {
    overflow-y: auto;
    font-family : 'League Spartan';
 }
+
+.class-button{
+  width: 60px; 
+  height: 60px; /* Make sure the height is the same as the width */
+  margin-left : 20%;
+  margin-top : 10%;
+  border-radius: 100%;
+  border: none; /* Optional: remove the border */
+  background-image : linear-gradient(to right, #D9D9D9, #5684a5);
+  color: black; /* Adjust the text color as needed */
+  cursor: pointer;
+  font-family : 'League Spartan';
+  font-size : 16px;
+  transition: background-color 0.2s; 
+}
+
+.class-button > button:hover { 
+  background-color: #777575;
+  color: white;
+}
+
+.classmate-button{
+  
+  background-color : #42535F;
+  width : 100%;
+  height : 10%;
+  margin-top : 10%;
+  font-family : 'League Spartan';
+  color: white; 
+  border-radius: 20%;
+  cursor: pointer;
+  justify-content: center;
+}
+
 
