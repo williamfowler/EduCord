@@ -11,7 +11,6 @@ const SendMessage = ({ scroll }) => {
   const sendMessage = async (event) => {
     event.preventDefault();
     if (message.trim() === "") {
-      alert("Enter valid message");
       return;
     }
     const { uid, displayName, photoURL } = auth.currentUser;
