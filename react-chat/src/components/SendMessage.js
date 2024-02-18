@@ -4,7 +4,7 @@ import React, { useRef, useState } from "react";
 import { auth, db } from "../firebase";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 
-const SendMessage = ({ scroll }) => {
+const SendMessage = ({ scroll }, { selectedChatRoom }) => {
   // added
   const [message, setMessage] = useState("");
 
@@ -15,7 +15,7 @@ const SendMessage = ({ scroll }) => {
       return;
     }
     const { uid, displayName, photoURL } = auth.currentUser;
-    await addDoc(collection(db, "messages"), {
+    await addDoc(collection(db, selectedChatRoom), {
       text: message,
       name: displayName,
       avatar: photoURL,
