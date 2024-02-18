@@ -21,8 +21,12 @@ const ClassmatesSidebar = ({ onSelectChatRoom }) => {
   }, []);
 
   const handleChatRoomChange = (user) => {
+     // Sort the user names alphabetically
+    const currentUser = auth.currentUser.displayName;
+    const userNames = [currentUser, user.name].sort();
+
     // Concatenate the current user's name and the selected user's name
-    const chatRoomName = `${auth.currentUser.displayName}_${user.name}`;
+    const chatRoomName = userNames.join('_');
     onSelectChatRoom(chatRoomName);
   };
 
