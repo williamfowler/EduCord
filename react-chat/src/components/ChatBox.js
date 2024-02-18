@@ -9,16 +9,14 @@ import {
 import { db } from "../firebase";
 import Message from "./Message";
 import SendMessage from "./SendMessage";
-import Friends from "./ClassmateSidebar.js";
-import ClassmatesSidebar from "./ClassmateSidebar.js";
 
-
-const ChatBox = () => {
+const ChatBox = ({ selectedChatRoom }) => {
   const [messages, setMessages] = useState([]);
   const scroll = useRef();
+
   useEffect(() => {
     const q = query(
-      collection(db, "messages"),
+      collection(db, selectedChatRoom), // Use selectedChatRoom to determine the Firestore collection
       orderBy("createdAt", "desc"),
       limit(50)
     );
@@ -34,25 +32,22 @@ const ChatBox = () => {
       setMessages(sortedMessages);
     });
     return () => unsubscribe;
-  }, []);
+  }, [selectedChatRoom]);
 
   
 
   return (
     <div className="container">
       <main className="chat-box">
-      <div className="messages-wrapper">
-        {messages?.map((message) => (
-          <Message key={message.id} message={message} />
-        ))}
-      </div>
-      {/* when a new message enters the chat, the screen scrolls down to the scroll div */}
-      <span ref={scroll}></span>
-      <SendMessage scroll={scroll} />
-      
-    </main>
+        <div className="messages-wrapper">
+          {messages?.map((message) => (
+            <Message key={message.id} message={message} />
+          ))}
+        </div>
+        <span ref={scroll}></span>
+        <SendMessage scroll={scroll} selectedChatRoom={selectedChatRoom}/>
+      </main>
     </div>
-    
   );
 };
 
