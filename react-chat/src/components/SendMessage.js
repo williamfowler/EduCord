@@ -1,11 +1,8 @@
 import React, { useState } from "react";
-
-// added
 import { auth, db } from "../firebase";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { addDoc, collection, query, where, getDocs, serverTimestamp } from "firebase/firestore";
 
 const SendMessage = ({ scroll , selectedChatRoom }) => {
-  // added
   const [message, setMessage] = useState("");
 
   const sendMessage = async (event) => {
@@ -14,7 +11,8 @@ const SendMessage = ({ scroll , selectedChatRoom }) => {
       return;
     }
     const { uid, displayName, photoURL } = auth.currentUser;
-    // error is because selectedChatRoom is empty
+    
+    // Add the message to the selected chat room collection
     await addDoc(collection(db, selectedChatRoom), {
       text: message,
       name: displayName,
@@ -23,9 +21,17 @@ const SendMessage = ({ scroll , selectedChatRoom }) => {
       uid,
     });
 
-    await addDoc(collection(db, "users"), {
-      name: displayName,
-    });
+    // Check if the user already exists in the "users" collection
+    const userQuery = query(collection(db, "users"), where("name", "==", displayName));
+    const querySnapshot = await getDocs(userQuery);
+    
+    // If the user doesn't exist, add them to the "users" collection
+    if (querySnapshot.empty) {
+      await addDoc(collection(db, "users"), {
+        name: displayName,
+      });
+    }
+
     setMessage("");
     scroll.current.scrollIntoView({ behavior: "smooth" });
   };
@@ -41,10 +47,8 @@ const SendMessage = ({ scroll , selectedChatRoom }) => {
         type="text"
         className="form-input__input"
         placeholder="type message..."
-        // added
         value={message}
         onChange={(e) => setMessage(e.target.value)}
-        
       />
       <button type="submit">Send</button>
     </form>

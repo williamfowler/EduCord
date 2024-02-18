@@ -23,10 +23,10 @@ const Welcome = () => {
 
   return (
     <main className="welcome">
-      <h2>Welcome to ShitCord.</h2>
-      <h3><i>Discord, but just shit.</i></h3>
+      <h2>Welcome to EduCord.</h2>
+      <h3><i>Discord, but just education.</i></h3>
       <img src="/logo512.png" alt="ReactJs logo" width={50} height={50} />
-      <p>Sign in with Google to chat with with your fellow ShitCorders.</p>
+      <p>Sign in with Google to chat with with your fellow EduCorders.</p>
       <button className="sign-in">
         <img
           onClick={googleSignIn}
