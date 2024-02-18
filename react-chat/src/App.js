@@ -1,32 +1,4 @@
-// import "./App.css";
-// import NavBar from "./components/NavBar";
-// import ChatBox from "./components/ChatBox";
-// import Welcome from "./components/Welcome";
-// import { useState } from "react";
-
-// // added
-// import { auth } from "./firebase";
-// import { useAuthState } from "react-firebase-hooks/auth";
-
-// function App() {
-//   const [user, setUser] = useState(false);
-    
-//   return (
-//     <div className="App">
-//       <NavBar />
-//       {!user ? (
-//         <Welcome />
-//       ) : (
-//         <>
-//           <ChatBox />
-//         </>
-//       )}
-//     </div>
-//   );
-// }
- 
-// export default App;
-
+import React, { useState } from "react";
 import { auth } from "./firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import "./App.css";
@@ -39,16 +11,19 @@ import ClassesSidebar from "./components/ClassesSidebar"
 function App() {
   const [user] = useAuthState(auth);
 
+  // Related to chat room
+  const [selectedChatRoom, setSelectedChatRoom] = useState("messages"); // Default to "messages"
+
   return (
     <div className="App">
       {!user ? (
         <Welcome />
       ) : (
         <>
-          <ClassmatesSidebar />
-          <ClassesSidebar/>
+          <ClassmatesSidebar onSelectChatRoom={setSelectedChatRoom}/>
+          <ClassesSidebar onSelectClass={setSelectedChatRoom}/>
           <NavBar />
-          <ChatBox />
+          <ChatBox selectedChatRoom={selectedChatRoom} />
         </>
       )}
     </div>
