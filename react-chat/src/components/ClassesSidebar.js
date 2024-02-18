@@ -1,9 +1,10 @@
 import React from 'react';
 
-const ClassesSidebar = ({ /*classes, */ onSelectClass }) => {
+const ClassesSidebar = ({  onSelectClass , onNameOfChat }) => {
 
   const handleClassChange = (room) => {
     onSelectClass(room); // Call callback function to change selected chat room
+    onNameOfChat(room);
   };
 
   // originally these sent to Class 1 and Class 2

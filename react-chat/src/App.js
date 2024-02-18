@@ -23,7 +23,7 @@ function App() {
       ) : (
         <>
           <ClassmatesSidebar onSelectChatRoom={setSelectedChatRoom} onNameOfChat={setNameOfChat}/>
-          <ClassesSidebar onSelectClass={setSelectedChatRoom}/>
+          <ClassesSidebar onSelectClass={setSelectedChatRoom} onNameOfChat={setNameOfChat}/>
           <NavBar nameOfChat={nameOfChat}/>
           <ChatBox selectedChatRoom={selectedChatRoom} />
         </>
