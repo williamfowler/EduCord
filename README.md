@@ -1,9 +1,27 @@
-# Building a Real-time Chat App with ReactJs and Firebase. :writing_hand:
+## Inspiration
 
-This is the code example for my article on [Building a Real-time Chat App with ReactJs and Firebase](https://www.freecodecamp.org/news/building-a-real-time-chat-app-with-reactjs-and-firebase/) for [FreeCodeCamp](https://freecodecamp.org/). Here is the [live demo](https://react-chat-timonwa.vercel.app/).
+We were inspired by the shortcomings of Canvas's messaging system and decided to improve it by incorporating elements of our favorite messaging apps, Slack and Discord.
 
-Visit my blog, [Timonwa's Notes](https://blog.timonwa.com), for awesome technical contents like articles, codesnippets, tech goodies, community projects and more.
+## What it does
 
-Please give this repo a ⭐ if it was helpful to you.
+Allows users to communicate with other students in their classes.
 
-![A screencast demo of the react chat app. I log in in with my Google account, the chat room shows up, then I log out](https://user-images.githubusercontent.com/63044364/211147631-d8b8a732-1572-4801-ba01-99a271b77bc4.gif)
+## How we built it
+
+We build our website using NodeJS and React. We used Firebase Firestore Cloud for storing message data.
+
+## Challenges we ran into
+
+Everything
+
+## Accomplishments that we're proud of
+
+Being able to make a functioning messaging app was cool. We implemented most of the UI from scratch.
+
+## What we learned
+
+We all have picked up some web development skills in using NodeJS, React, and Javascript in general. 
+
+## What's next for EduCord
+
+We will implement file sharing and class roles.
