@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const ClassmatesSidebar = ({ classmates, onSelectClassmate }) => {
-
+  const [isClassModulesSidebarVisible, setIsClassModulesSidebarVisible] = useState(false);
 
 
 

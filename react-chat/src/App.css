@@ -28,6 +28,8 @@ input {
 
 .chat-box {
   overscroll-behavior: contain;
+  width : 75%;
+  margin-left : 25%
 }
 
 /* navbar */
@@ -88,6 +90,7 @@ input {
   font-family : 'League Spartan';
   overscroll-behavior-y: contain;
   overscroll-behavior-x: contain;
+  
 }
 .chat-bubble {
   border-radius: 20px 20px 20px 0;
@@ -96,7 +99,6 @@ input {
   color: #fff;
   width: max-content;
   max-width: calc(100% - 50px);
-  margin-left : 25%;
   box-shadow: -2px 2px 1px 1px #26252A;
   display: flex;
   align-items: flex-start;
@@ -139,7 +141,7 @@ input {
   padding: 20px 30px;
   background-color: #445765;
   display: flex;
-  margin-left : 25%;
+  margin-left : 0%;
 }
 .send-message > input {
   height: 40px;
@@ -211,4 +213,42 @@ input {
    overflow-y: auto;
    font-family : 'League Spartan';
 }
+.toggle-class-module-button{
+  background-color: #42535F;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right : 75%;
+  margin-top : 5%;
+  width : 150px;
+  font-family : 'League Spartan';
+}
 
+.class-module-sidebar{
+  width: 15%; /* Adjust width as needed */
+  background-color: #6B879C; 
+  color: white;
+  padding: 20px;
+  box-sizing: border-box;
+  position: fixed;
+  height: 100%;
+  font-family : 'League Spartan';
+  right: 75%;
+  top: 0;
+  overflow-y: auto;
+}
+
+.toggle-classmate-button{
+  background-color: #42535F;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right : 75%;
+  margin-top : 5%;
+  width : 150px;
+  font-family : 'League Spartan';
+}

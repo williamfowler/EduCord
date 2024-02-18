@@ -9,13 +9,15 @@ import {
 import { db } from "../firebase";
 import Message from "./Message";
 import SendMessage from "./SendMessage";
+
 import Friends from "./ClassmateSidebar.js";
 import ClassmatesSidebar from "./ClassmateSidebar.js";
 
 
 const ChatBox = () => {
   const [messages, setMessages] = useState([]);
-  const scroll = useRef();
+  const scrollRef = useRef();
+
   useEffect(() => {
     const q = query(
       collection(db, "messages"),
@@ -36,23 +38,28 @@ const ChatBox = () => {
     return () => unsubscribe;
   }, []);
 
+  useEffect(() => {
+    // Scroll to the bottom of the chat whenever messages change
+    if (scrollRef.current) {
+      scrollRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messages]);
+
   
 
   return (
     <div className="container">
       <main className="chat-box">
-      <div className="messages-wrapper">
-        {messages?.map((message) => (
-          <Message key={message.id} message={message} />
-        ))}
-      </div>
-      {/* when a new message enters the chat, the screen scrolls down to the scroll div */}
-      <span ref={scroll}></span>
-      <SendMessage scroll={scroll} />
-      
-    </main>
+        <div className="messages-wrapper">
+          {messages.map((message) => (
+            <Message key={message.id} message={message} />
+          ))}
+          {/* Reference for scrolling */}
+          <span ref={scrollRef}></span>
+        </div>
+        <SendMessage scroll={scrollRef} />
+      </main>
     </div>
-    
   );
 };
 
