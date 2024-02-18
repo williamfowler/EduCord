@@ -10,11 +10,9 @@ import { db } from "../firebase";
 import Message from "./Message";
 import SendMessage from "./SendMessage";
 
-
 const ChatBox = ({ selectedChatRoom }) => {
   const [messages, setMessages] = useState([]);
   const scrollRef = useRef();
-
 
   useEffect(() => {
     const q = query(
@@ -22,7 +20,6 @@ const ChatBox = ({ selectedChatRoom }) => {
       orderBy("createdAt", "desc"),
       limit(50)
     );
-
 
     const unsubscribe = onSnapshot(q, (QuerySnapshot) => {
       const fetchedMessages = [];
@@ -45,7 +42,6 @@ const ChatBox = ({ selectedChatRoom }) => {
   }, [messages]);
   
 
-
   return (
     <div className="container">
       <main className="chat-box">
@@ -61,6 +57,5 @@ const ChatBox = ({ selectedChatRoom }) => {
     </div>
   );
 };
-
 
 export default ChatBox;
